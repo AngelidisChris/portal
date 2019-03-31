@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>User Profile</title>
+    <link href="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/signin.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Welcome {{ name }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <form action="/form/show" method="post">
+                <button type="submit" name="submit" class="btn btn-primary">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    {% for i in result  %}
+    <div class="well show-grid">
+        <div class="span6">
+            <h4>Date Submitted: {{ i.submitted_date }}</h4>
+        </div>
+        <div class="span6">
+            <h4>Vacation Start: {{ i.dateFrom }}</h4>
+        </div>
+        <div class="span6">
+            <h4>Vacation End: {{ i.dateTo }}</h4>
+        </div>
+        <div class="span6">
+            <h4>Status: {% if i.status == 'pending' %} <span class="text-warning text-uppercase">{{ i.status }}</span>
+                        {% elseif  i.status == 'approved'%} <span class="text-success text-uppercase">{{ i.status }}</span>
+                        {% elseif  i.status == 'rejected'%} <span class="text-danger text-uppercase">{{ i.status }}</span>
+                        {% endif %}</h4>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>

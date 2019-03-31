@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Admin Portal - Update User</title>
+
+    <script src="/resources/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/signin.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Welcome {{ name }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class='input-group col-md-4  col-md-offset-1 padtop30'>
+    <a href="/home" class="btn btn-primary btn-lg"><span class="glyphicon 	glyphicon glyphicon glyphicon-arrow-left"></span>
+        Back to Home </a>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        {% if errors|length %}
+            <div class="alert alert-primary">
+                {% for error_array in errors %}
+                    {% for error_item in error_array %}
+                        <div class="alert alert-danger fade in">
+                            {{ error_item }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+        {% endif %}
+    </div>
+    <form class="form-signin" id="signupform" action="/form/updateUserForm" method="POST">
+        <h2 class="form-signin-heading text-center">Update user</h2>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="firstname">First name:</label>
+            <input type="text" id="firstname" name="firstname" class="form-control" value="{{ user_data.firstname }}" placeholder="First name" required autofocus>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="lastname">Last name:</label>
+            <input type="text" id="lastname" name="lastname" class="form-control" value="{{ user_data.lastname }}" placeholder="Last name" required>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="inputEmail">Email address:</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" value="{{ user_data.email }}" placeholder="Email address" required>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="inputPassword">Password:</label>
+            <input type="password" id="inputPassword" name="password" class="form-control"  placeholder="Password">
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label>User type:</label>
+
+            <select name="user_type" class='input-group col-md-12 padtop padbot'>
+                {% if user_data.type == 1 %}
+                    <option value="1" selected>Employee</option>
+                    <option value="2">Admin</option>
+                {% else %}
+                    <option value="1" >Employee</option>
+                    <option value="2" selected>Admin</option>
+                {% endif %}
+            </select>
+
+        </div>
+        <input type="hidden" id="old_email" name="old_email" value="{{ user_data.email }}">
+        <div class='input-group col-md-12 padtop'>
+            <button class=" btn btn-lg btn-primary btn-block" type="submit">Update user</button>
+        </div>
+    </form>
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

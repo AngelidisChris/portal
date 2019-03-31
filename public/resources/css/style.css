@@ -1,0 +1,125 @@
+body {
+  background: #f4f4f4;
+}
+
+/*.navbar-nav > li > a, .navbar-brand {
+  padding-top:5px !important;
+  padding-bottom:0 !important;
+  height: 60px;
+  }*/
+
+.navbar {
+  background: white;
+  min-height: 70px !important;
+  box-shadow: 0 0 7px gray;
+}
+
+.navbar-brand {
+  background: url('../images/logo.png') center 8px/ contain no-repeat;
+  width: 110px;
+  min-height: 60px !important;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+#signin{
+  margin-top: 90px;
+
+}
+
+
+
+.form-signin-heading{
+  padding-top: 15px;
+}
+.form-signin
+{
+    background: white;
+    padding:0px 15px 15px 15px !important;
+    box-shadow: 1px 1px 1px 1px lightgray!important;
+    border-radius: 5px;
+}
+.form-signin > label{
+  padding-top: 5px;
+}
+
+.glyphicon-user, .glyphicon-lock{
+  color:white;
+}
+
+
+
+.input-group-addon{
+  background: #428bca;
+}
+
+.submit-btn{
+  margin-top: 15px;
+}
+
+.row-margin{
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.casepass{
+  color:gray;
+}
+
+
+.popover.primary {
+    border-color:#337ab7;
+}
+.popover.primary>.arrow {
+    border-top-color:#337ab7;
+}
+.popover.primary>.popover-title {
+    color:#fff;
+    background-color:#337ab7;
+    border-color:#337ab7;
+}
+.popover.success {
+    border-color:#d6e9c6;
+}
+.popover.success>.arrow {
+    border-top-color:#d6e9c6;
+}
+.popover.success>.popover-title {
+    color:#3c763d;
+    background-color:#dff0d8;
+    border-color:#d6e9c6;
+}
+.popover.info {
+    border-color:#bce8f1;
+}
+.popover.info>.arrow {
+    border-top-color:#bce8f1;
+}
+.popover.info>.popover-title {
+    color:#31708f;
+    background-color:#d9edf7;
+    border-color:#bce8f1;
+}
+.popover.warning {
+    border-color:#faebcc;
+}
+.popover.warning>.arrow {
+    border-top-color:#faebcc;
+}
+.popover.warning>.popover-title {
+    color:#8a6d3b;
+    background-color:#fcf8e3;
+    border-color:#faebcc;
+}
+.popover.danger {
+    border-color:#ebccd1;
+}
+.popover.danger>.arrow {
+    border-top-color:#ebccd1;
+}
+.popover.danger>.popover-title {
+    color:#a94442;
+    background-color:#f2dede;
+    border-color:#ebccd1;
+}

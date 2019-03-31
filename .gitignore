@@ -1,0 +1,7 @@
+composer.phar
+vendor
+.env
+.idea
+# Commit your application's lock file httpsgetcomposer.orgdoc01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file httpgetcomposer.orgdoc02-libraries.md#lock-file
+# composer.lock

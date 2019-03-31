@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Admin Portal - Create User</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/signin.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Welcome {{ name }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class='input-group col-md-4  col-md-offset-1 padtop30'>
+    <a href="/home" class="btn btn-primary btn-lg"><span class="glyphicon 	glyphicon glyphicon glyphicon-arrow-left"></span>
+        Back to Home </a>
+</div>
+
+<div class="row">
+    {% if errors|length %}
+        <div class="alert alert-primary">
+            {% for error_array in errors %}
+                {% for error_item in error_array %}
+                    <div class="alert alert-danger fade in">
+                        {{ error_item }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+    {% endif %}
+</div>
+
+<div class="container">
+    <form class="form-signin" id="signupform" action="/form/createUserForm" method="POST">
+        <h2 class="form-signin-heading text-center">Create user</h2>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="firstname">First name:</label>
+            <input type="text" id="firstname" name="firstname" class="form-control" value="" placeholder="First name" required autofocus>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="lastname">Last name:</label>
+            <input type="text" id="lastname" name="lastname" class="form-control" value="" placeholder="Last name" required>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="inputEmail">Email address:</label>
+            <input type="email" id="inputEmail" name="email" class="form-control" value="" placeholder="Email address" required>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label for="inputPassword">Password:</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" value="" placeholder="Password" required>
+        </div>
+
+        <div class='input-group col-md-12 padtop'>
+            <label>User type:</label>
+
+            <select name="user_type" class='input-group col-md-12 padtop padbot'>
+                <option value="1" selected>Employee</option>
+                <option value="2">Admin</option>
+            </select>
+
+        </div>
+        <div class='input-group col-md-12 padtop'>
+            <button class=" btn btn-lg btn-primary btn-block" type="submit">Create user</button>
+        </div>
+    </form>
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

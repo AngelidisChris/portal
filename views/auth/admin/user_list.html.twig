@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Admin Portal</title>
+    <script src="/resources/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+    <link href="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/signin.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Welcome {{ name }}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <form action="/form/show" method="post">
+                <button type="submit" name="submit" class="btn btn-primary">Create User</button>
+            </form>
+        </div>
+    </div>
+
+
+    {% for i in result  %}
+        <div class="well  show-grid col-md-8 col-md-offset-2">
+
+            <button class="btn btn-block" style="background-color:transparent" type="submit" form="{{ i.email }}">
+
+            <form action="/form/show" method="post" id="{{ i.email }}">
+            <div class="span6">
+                <h4>First Name: {{ i.firstname }}</h4>
+            </div>
+            <div class="span6">
+                <h4>Last Name: {{ i.lastname }}</h4>
+            </div>
+            <div class="span6">
+                <h4>Email: {{ i.email }}</h4>
+            </div>
+            <div class="span6">
+                <h4>User Type: {% if i.user_type == 1 %} Employee
+                                {% else %} Administrator
+                                {% endif %}
+                </h4>
+            </div>
+            <input type="hidden" id="user_id" name="user_id" value="{{ i.id }}">
+
+        </form>
+
+
+       </button> </div>
+    {% endfor %}
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
