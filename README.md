@@ -131,7 +131,7 @@ Start Apache and MySQL  from XAMPP control panel and that's it, environment is r
 
 <h3>DATABASE SETUP</h3>
 
-Import the **portal.sql** file to phpMyAdmin client that it's included to the repository to create the database of the app. It will also seed data to the database. A **master** user with **`password = 1234`** and **user_type categories**.
+Import the **eer_output.sql** file to phpMyAdmin client that it's included to the repository to create the database of the app. It will also seed data to the database. A **master** user with **`password = 1234`** and **user_type categories**.
 
 ```diff
 # password is 1234
@@ -157,7 +157,7 @@ $ composer update
 
 <h3>ENVIRONMENT VARIABLES</h3>
 
-Application is using **PHP Dotenv** package to load environment variables from `.env` to `getenv()` automagically. At the root of the git repo is included `.git.example`, rename it to `.env` and fill the variables.
+Application is using **PHP Dotenv** package to load environment variables from `.env` to `getenv()` automagically. At the root of the git repo is included `.env.example`, rename it to `.env` and fill the variables.
 
 ```diff
 APP_NAME = Portal
