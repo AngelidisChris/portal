@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `portal4` DEFAULT CHARACTER SET latin1 ;
-USE `portal4` ;
+CREATE SCHEMA IF NOT EXISTS `portal` DEFAULT CHARACTER SET latin1 ;
+USE `portal` ;
 
 -- -----------------------------------------------------
--- Table `portal4`.`user_types`
+-- Table `portal`.`user_types`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `portal4`.`user_types` (
+CREATE  TABLE IF NOT EXISTS `portal`.`user_types` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `type_name` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`id`) )
@@ -27,7 +27,7 @@ INSERT INTO `user_types` (`id`, `type_name`) VALUES
 -- -----------------------------------------------------
 -- Table `portal4`.`users`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `portal4`.`users` (
+CREATE  TABLE IF NOT EXISTS `portal`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `email` VARCHAR(255) NOT NULL ,
   `password` VARCHAR(255) NOT NULL ,
@@ -40,12 +40,12 @@ CREATE  TABLE IF NOT EXISTS `portal4`.`users` (
   INDEX `supervisor_id_idx` (`supervisor_id` ASC) ,
   CONSTRAINT `user_type`
     FOREIGN KEY (`user_type` )
-    REFERENCES `portal4`.`user_types` (`id` )
+    REFERENCES `portal`.`user_types` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `supervisor_id`
     FOREIGN KEY (`supervisor_id` )
-    REFERENCES `portal4`.`users` (`id` )
+    REFERENCES `portal`.`users` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -62,9 +62,9 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `user_t
 -- --------------------------------------------------------
 
 -- -----------------------------------------------------
--- Table `portal4`.`applications`
+-- Table `portal`.`applications`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `portal4`.`applications` (
+CREATE  TABLE IF NOT EXISTS `portal`.`applications` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `user_id` INT(11) NOT NULL ,
   `submitted_date` DATETIME NOT NULL ,
@@ -78,14 +78,14 @@ CREATE  TABLE IF NOT EXISTS `portal4`.`applications` (
   INDEX `user_id_idx` (`user_id` ASC) ,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id` )
-    REFERENCES `portal4`.`users` (`id` )
+    REFERENCES `portal`.`users` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 173
 DEFAULT CHARACTER SET = latin1;
 
-USE `portal4` ;
+USE `portal` ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
